@@ -249,7 +249,7 @@ export const projects: Project[] = [
     summary: "", // TODO: add a short description
     details: "", // TODO: add a detailed description
     features: [],
-    technologies: [], // TODO: add technologies
+    technologies: ["Ionic", "React"],
     image: bitacoraImg,
     imageAlt: "Art Deco illustration of an open journal with a fountain pen",
     repoUrl: null, // TODO: add repository URL

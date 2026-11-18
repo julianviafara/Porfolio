@@ -25,10 +25,10 @@ describe("portfolio content rules", () => {
     ]);
   });
 
-  it("does not invent details for Mi Pequeña Bitácora", () => {
+  it("lists only the confirmed technologies for Mi Pequeña Bitácora", () => {
     const b = projects.find((p) => p.id === "mi-pequena-bitacora")!;
     expect(b.summary).toBe("");
-    expect(b.technologies).toEqual([]);
+    expect(b.technologies).toEqual(["Ionic", "React"]);
   });
 
   it("features the AI-assisted development category", () => {
