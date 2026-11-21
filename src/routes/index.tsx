@@ -6,9 +6,9 @@ import { Skills } from "@/components/portfolio/Skills";
 import { Projects } from "@/components/portfolio/Projects";
 import { Contact } from "@/components/portfolio/Contact";
 
-const title = "Julian Andres Viafara Mosquera — Junior Software Developer";
+const title = "Julian Andres Viafara Mosquera — Frontend Developer";
 const description =
-  "Portfolio of Julian Andres Viafara Mosquera, Junior Software Developer and Computer Engineering student at UAO, Colombia. Projects, skills and contact.";
+  "Frontend development portfolio of Julian Andres Viafara Mosquera, a Computer Engineering student at UAO, Colombia. Explore React projects, skills and contact details.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

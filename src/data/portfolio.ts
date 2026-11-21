@@ -6,20 +6,18 @@
  * LINK RULE: never put invented URLs here. Use `null` for any link that is not
  * available yet; the UI shows a clearly marked "Link pending" placeholder instead.
  */
-import mealPlannerImg from "@/assets/project-mealplanner.jpg";
+import mealPlannerImg from "@/assets/MealPlanner.png";
 import pacificoImg from "@/assets/project-pacifico.jpg";
-import bitacoraImg from "@/assets/project-bitacora.jpg";
-import utilitiesImg from "@/assets/project-utilities.jpg";
-import gastronomyImg from "@/assets/project-gastronomy.jpg";
+import bitacoraImg from "@/assets/MiPequenaBitacora.png";
 
 export const profile = {
   firstNames: "Julian Andres",
   lastNames: "Viafara Mosquera",
   fullName: "Julian Andres Viafara Mosquera",
   initials: "JV",
-  roles: ["Junior Software Developer", "Computer Engineering Student"],
+  roles: ["Frontend Developer", "Computer Engineering Student"],
   intro:
-    "Building thoughtful digital experiences through software engineering, creative problem-solving, and modern development tools.",
+    "I build responsive, accessible web interfaces with React, TypeScript, and modern frontend tools, turning product ideas into clear, engaging user experiences.",
 } as const;
 
 export const contact = {
@@ -41,15 +39,15 @@ export type SectionId = (typeof navItems)[number]["id"];
 export const about = {
   paragraphs: [
     "I am a Computer Engineering student at Universidad Autónoma de Occidente (UAO), Colombia, with a Technical Degree in Software Programming from SENA.",
-    "I have a solid foundation in object-oriented programming, full-stack web development, database management, API development, and software architecture.",
-    "I am interested in building reliable, scalable, and visually engaging software solutions.",
+    "My main focus is frontend development: creating responsive interfaces, reusable components, and clear user experiences with React, TypeScript, and modern web technologies.",
+    "I also understand API integration, backend fundamentals, and software architecture, which helps me collaborate across the stack and build complete features.",
     "I also use AI-assisted development tools to improve my workflow, explore solutions, generate implementations, and accelerate software prototyping.",
   ],
   pillars: [
-    { title: "Object-Oriented Programming", icon: "boxes" },
-    { title: "Full-Stack Web Development", icon: "layers" },
-    { title: "Databases & APIs", icon: "database" },
-    { title: "Software Architecture", icon: "building" },
+    { title: "Responsive Interfaces", icon: "layers" },
+    { title: "React & TypeScript", icon: "boxes" },
+    { title: "API Integration", icon: "database" },
+    { title: "Accessible UI", icon: "building" },
   ],
   languages: [
     { name: "Spanish", level: "Native" },
@@ -103,13 +101,13 @@ export type SkillCategory = {
 
 export const skillCategories: SkillCategory[] = [
   {
-    id: "ai",
-    title: "AI-Assisted Development",
-    icon: "sparkles",
+    id: "frontend",
+    title: "Frontend Development",
+    icon: "layout",
     featured: true,
-    items: ["OpenAI Codex", "Claude Code", "Lovable"],
+    items: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Responsive Design"],
     description:
-      "Experienced in integrating AI-assisted development tools into the software development workflow, including code generation, implementation, debugging, refactoring, architectural exploration, and rapid prototyping.",
+      "Focused on building responsive, accessible interfaces and polished web experiences, from reusable components to API-connected features.",
   },
   {
     id: "languages",
@@ -118,10 +116,11 @@ export const skillCategories: SkillCategory[] = [
     items: ["Java", "JavaScript", "TypeScript", "Python", "SQL"],
   },
   {
-    id: "frontend",
-    title: "Frontend Development",
-    icon: "layout",
-    items: ["React", "Angular", "HTML5", "CSS3", "GSAP"],
+    id: "ai",
+    title: "AI-Assisted Development",
+    icon: "sparkles",
+    items: ["OpenAI Codex", "Claude Code", "Lovable"],
+    description: "AI-assisted tools for implementation, debugging, and rapid prototyping.",
   },
   {
     id: "backend",
@@ -186,10 +185,13 @@ export type Project = {
   /** Replace with your own screenshot import to swap the visual. */
   image: string;
   imageAlt: string;
+  imageFit?: "cover" | "contain";
   /** null = link not provided yet (shown as a "pending" placeholder). */
   repoUrl: string | null;
   /** null = no live deployment / not provided yet. */
   liveUrl: string | null;
+  /** Optional visible availability label for a project without a public URL. */
+  liveLabel?: string;
   /** Hide link placeholders entirely (e.g. confidential client work). */
   hideMissingLinks?: boolean;
   note?: string;
@@ -200,7 +202,7 @@ export const projects: Project[] = [
     id: "mealplanner",
     number: "01",
     title: "MealPlanner",
-    category: "Frontend Development · Full-Stack Web App",
+    category: "Frontend Development · Meal Planning",
     summary:
       "A responsive meal-planning app to organize weekly meals, discover recipes and manage grocery shopping.",
     details:
@@ -215,29 +217,29 @@ export const projects: Project[] = [
     ],
     technologies: ["React", "TypeScript", "Firebase Auth", "Firestore", "TheMealDB API", "Vite"],
     image: mealPlannerImg,
-    imageAlt: "Illustration of a meal-planning app on a laptop and phone",
-    repoUrl: null, // TODO: add MealPlanner repository URL
-    liveUrl: null, // TODO: add MealPlanner live URL
+    imageAlt: "MealPlanner landing page with a weekly meal plan and recipe image",
+    repoUrl: "https://github.com/julianviafara/MealPlanner.git",
+    liveUrl: "https://vmealplanner.netlify.app/",
   },
   {
     id: "pacifico-libre",
     number: "02",
     title: "Pacifico Libre",
-    category: "Business Software · Digital Solutions",
+    category: "Frontend Development · Professional Experience",
     summary:
-      "Digital solutions for Pacifico Libre, connecting software development with practical business needs.",
+      "Contributed to the development of internal organizational platforms for Pacifico Libre, building frontend experiences with React and supporting systems backed by Node.js.",
     details:
-      "A digital storefront (Vitrina Digital) and automated appointment scheduling, including a dynamic 15% discount that becomes available depending on the selected booking slot. Shown at a high level to respect client confidentiality.",
+      "Part of the development work on internal organizational platforms. React was used for the frontend and Node.js for the backend. Project specifics and access links are confidential.",
     features: [
-      "Vitrina Digital storefront",
-      "Automated appointment scheduling",
-      "Dynamic 15% discount by booking slot",
+      "Contributed to internal organizational platforms",
+      "React frontend development",
+      "Node.js backend integration",
     ],
-    technologies: ["Web Development", "Workflow Automation", "Scheduling"],
+    technologies: ["React", "Node.js"],
     image: pacificoImg,
     imageAlt: "Abstract Art Deco illustration of a storefront, calendar and clock",
-    repoUrl: null, // Confidential — add only if a public link exists
-    liveUrl: null, // TODO: add public storefront URL if shareable
+    repoUrl: null,
+    liveUrl: null,
     hideMissingLinks: true,
     note: "Client work · confidential details omitted",
   },
@@ -245,58 +247,23 @@ export const projects: Project[] = [
     id: "mi-pequena-bitacora",
     number: "03",
     title: "Mi Pequeña Bitácora",
-    category: "University Project",
-    summary: "", // TODO: add a short description
-    details: "", // TODO: add a detailed description
-    features: [],
-    technologies: [], // TODO: add technologies
+    category: "Frontend Development · Nature Journal",
+    summary:
+      "A playful nature journal that encourages children to explore outdoors, record wildlife sightings, and keep track of their progress.",
+    details:
+      "The experience pairs a friendly guide with daily exploration missions, species observations, and progress milestones to make learning about nature engaging.",
+    features: [
+      "Daily nature exploration missions",
+      "Record species and wildlife sightings",
+      "Track streaks, points, and levels",
+      "Nature facts and discovery prompts",
+    ],
+    technologies: [],
     image: bitacoraImg,
-    imageAlt: "Art Deco illustration of an open journal with a fountain pen",
-    repoUrl: null, // TODO: add repository URL
-    liveUrl: null, // TODO: add live URL
-  },
-  {
-    id: "public-utility-system",
-    number: "04",
-    title: "Public Utility Management System",
-    category: "University Project · Distributed Systems",
-    summary:
-      "A full-stack distributed solution to manage public utility services through a microservices architecture.",
-    details:
-      "Built with Hexagonal Architecture and RESTful APIs, integrating legacy systems behind an Angular frontend. Includes canary deployment strategies, unit testing and SCRUM collaboration.",
-    features: [
-      "Hexagonal Architecture",
-      "RESTful API integration",
-      "Legacy system integration",
-      "Canary deployments",
-      "Unit testing",
-      "SCRUM collaboration",
-    ],
-    technologies: ["Java", "Spring Boot", "Angular", "PostgreSQL", "Docker"],
-    image: utilitiesImg,
-    imageAlt: "Art Deco illustration of connected utility network nodes",
-    repoUrl: null, // TODO: add repository URL
-    liveUrl: null, // TODO: add live URL if available
-  },
-  {
-    id: "gastronomy-landing",
-    number: "05",
-    title: "Interactive Gastronomy Landing Page",
-    category: "Frontend Development · UI Animation",
-    summary:
-      "An interactive landing page for the gastronomy sector focused on modern user experience and visual engagement.",
-    details:
-      "A responsive interface with advanced animations, fluid transitions and GSAP-powered interactions designed to make the dining experience feel alive on screen.",
-    features: [
-      "Responsive interface",
-      "Advanced animations",
-      "Fluid transitions",
-      "GSAP-powered interactions",
-    ],
-    technologies: ["React", "GSAP", "CSS3"],
-    image: gastronomyImg,
-    imageAlt: "Art Deco illustration of a gourmet plated dish with golden steam",
-    repoUrl: null, // TODO: add repository URL
-    liveUrl: null, // TODO: add live URL
+    imageAlt: "Mi Pequeña Bitácora app dashboard showing a nature mission and wildlife progress",
+    imageFit: "contain",
+    repoUrl: null,
+    liveUrl: null,
+    liveLabel: "Coming soon",
   },
 ];
