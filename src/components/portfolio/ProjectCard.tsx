@@ -56,7 +56,7 @@ export function ProjectCard({ project, className }: { project: Project; classNam
               height={600}
               loading="lazy"
               decoding="async"
-              className="h-full w-full object-cover"
+              className={cn("h-full w-full", project.imageFit === "contain" ? "bg-white object-contain" : "object-cover")}
             />
             <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
             <span className="absolute bottom-3 left-5 font-display text-5xl text-gold-metal">{project.number}</span>
@@ -81,11 +81,6 @@ export function ProjectCard({ project, className }: { project: Project; classNam
               ))}
               {project.technologies.length > 4 && (
                 <li className="px-1 py-1 font-mono text-[0.65rem] text-gold-muted">+{project.technologies.length - 4}</li>
-              )}
-              {project.technologies.length === 0 && (
-                <li className="border border-dashed border-gold-muted/60 px-2 py-1 font-mono text-[0.65rem] text-gold-muted">
-                  Technologies to be added
-                </li>
               )}
             </ul>
 
@@ -158,20 +153,18 @@ export function ProjectCard({ project, className }: { project: Project; classNam
             </ul>
           )}
 
-          <p className="relative mt-5 deco-eyebrow text-[0.6rem]">Technologies</p>
-          <ul className="relative mt-2 flex flex-wrap gap-1.5">
-            {project.technologies.length > 0 ? (
-              project.technologies.map((t) => (
-                <li key={t} className="border border-gold/40 bg-gold/5 px-2 py-1 font-mono text-[0.65rem] text-gold-bright">
-                  {t}
-                </li>
-              ))
-            ) : (
-              <li className="border border-dashed border-gold-muted/60 px-2 py-1 font-mono text-[0.65rem] text-gold-muted">
-                To be added
-              </li>
-            )}
-          </ul>
+          {project.technologies.length > 0 && (
+            <>
+              <p className="relative mt-5 deco-eyebrow text-[0.6rem]">Technologies</p>
+              <ul className="relative mt-2 flex flex-wrap gap-1.5">
+                {project.technologies.map((t) => (
+                  <li key={t} className="border border-gold/40 bg-gold/5 px-2 py-1 font-mono text-[0.65rem] text-gold-bright">
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
 
           <div className="relative mt-auto flex flex-wrap gap-2 pt-6">
             {project.repoUrl ? (
@@ -190,7 +183,13 @@ export function ProjectCard({ project, className }: { project: Project; classNam
                 </a>
               </Button>
             ) : (
-              showPending && <PendingLink label="Live site" />
+              project.liveLabel ? (
+                <span className="inline-flex h-10 items-center border border-gold/40 px-4 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-gold">
+                  Live site · {project.liveLabel}
+                </span>
+              ) : (
+                showPending && <PendingLink label="Live site" />
+              )
             )}
             {!hasLinks && !showPending && (
               <span className="inline-flex items-center gap-2 text-xs text-silver">
